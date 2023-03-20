@@ -1,4 +1,4 @@
-function Hello(props) {
+const Hello = (props) => {
   // melakukan destructing
   const { name, waktu } = props;
   //   const span = document.querySelector('span');
@@ -11,6 +11,6 @@ function Hello(props) {
       <p>Saya {name} fronend-enginer </p>
     </div>
   );
-}
+};
 
 export default Hello;

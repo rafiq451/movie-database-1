@@ -1,5 +1,5 @@
 import Hello from './Hello';
-function Main() {
+const Main = () => {
   return (
     <main>
       <Hello name="Aufa" waktu="Malam" />
@@ -9,5 +9,5 @@ function Main() {
       <Hello name="Martha" waktu="Datang Kembali" />
     </main>
   );
-}
+};
 export default Main;
