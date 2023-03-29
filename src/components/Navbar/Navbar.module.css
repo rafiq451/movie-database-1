@@ -1,0 +1,53 @@
+:root {
+  --primary: #06d6a0;
+  --secondry: #118ab2;
+}
+.container {
+  background-color: #06d6a0;
+  padding: 1rem;
+  color: #fff;
+  font-family: Poppins;
+}
+
+/* brand / logo */
+.navbar__brand {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.navbar__list {
+  list-style: none;
+}
+
+.navbar__items {
+  margin-bottom: 1rem;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar__brand {
+    font-size: 30px;
+    /* margin-top: 1rem; */
+  }
+
+  .navbar__list {
+    display: flex;
+    margin-top: -1rem;
+  }
+
+  .navbar__items {
+    margin: 0 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding: 0.9rem 2rem;
+  }
+}

@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* 
 h1,
 h2,
 p {
@@ -12,11 +12,11 @@ p {
 
 body {
   background-color: #ecf0f1;
-}
+} */
 
 /* Styling Nav */
 
-nav {
+/* nav {
   background-color: #1abc9c;
   color: #fff;
   max-height: 10vh;
@@ -30,28 +30,28 @@ nav ul {
 nav ul li {
   list-style: none;
   padding: 1rem;
-}
+} */
 
 /* Styling Main */
-main {
+/* main {
   min-height: 80vh;
   max-width: 768px;
   margin: 1rem auto;
-}
+} */
 
 /* Styling Footer */
-footer {
+/* footer {
   padding: 1rem;
   color: #fff;
   max-height: 15vh;
   text-align: center;
   background-color: #1abc9c;
-}
+} */
 
 /* Styling Hello */
-.hello {
+/* .hello {
   background-color: #fff;
   padding: 2rem 1rem;
   margin: 1rem;
   border-radius: 10px;
-}
+} */
