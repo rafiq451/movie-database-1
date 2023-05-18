@@ -1,4 +1,3 @@
-/* small screen */
 :root {
   --primary: #06d6a0;
   --secondry: #118ab2;
@@ -6,7 +5,7 @@
 .container {
   padding: 2rem;
   text-align: center;
-  color: black;
+  color: rgb(47, 47, 47);
   font-family: Poppins;
 }
 

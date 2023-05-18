@@ -2,7 +2,6 @@
   --primary: #06d6a0;
   --secondry: #118ab2;
 }
-
 .container {
   background-color: var(--primary);
   padding: 1rem;

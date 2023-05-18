@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import style from './Navbar.module.css';
 const Navbar = () => {
   return (
@@ -8,11 +9,31 @@ const Navbar = () => {
         </div>
         <div>
           <ul className={style.navbar__list}>
-            <li className={style.navbar__items}>Home</li>
-            <li className={style.navbar__items}>Add Movie</li>
-            <li className={style.navbar__items}>Popular</li>
-            <li className={style.navbar__items}>Now Playing</li>
-            <li className={style.navbar__items}>Top Rated</li>
+            <li className={style.navbar__items}>
+              <Link to="/" className={style.list}>
+                Home
+              </Link>
+            </li>
+            <li className={style.navbar__items}>
+              <Link to="/movie/create" className={style.list}>
+                Add Movie
+              </Link>
+            </li>
+            <li className={style.navbar__items}>
+              <Link to="/movie/popular" className={style.list}>
+                Popular
+              </Link>
+            </li>
+            <li className={style.navbar__items}>
+              <Link to="/movie/now" className={style.list}>
+                Now Playing
+              </Link>
+            </li>
+            <li className={style.navbar__items}>
+              <Link to="/movie/top" className={style.list}>
+                Top Rated
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

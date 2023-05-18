@@ -3,7 +3,7 @@
   --secondry: #118ab2;
 }
 .container {
-  background-color: #06d6a0;
+  background-color: var(--primary);
   padding: 1rem;
   color: #fff;
   font-family: Poppins;
@@ -17,6 +17,16 @@
 
 .navbar__list {
   list-style: none;
+  text-decoration: none;
+}
+
+.list {
+  text-decoration: none;
+  color: #fff;
+}
+
+.list:hover {
+  color: var(--secondry);
 }
 
 .navbar__items {

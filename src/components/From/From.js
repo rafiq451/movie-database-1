@@ -2,73 +2,99 @@ import { useState } from 'react';
 import style from './From.module.css';
 import { nanoid } from 'nanoid';
 import Alert from '../Alert/Alert';
-const From = (props) => {
+const Form = (props) => {
   const { movies, setMovies } = props;
-  // membuat satate title
-  const [title, setTitle] = useState('');
-  // membuat state date
-  const [date, setDate] = useState('');
-  // membuat state type
-  const [type, setType] = useState('');
-  // membuat state type
-  const [poster, setPoster] = useState('');
-  // Membuat state title & date errors/empty
 
-  const [isTitleError, setIsTitleError] = useState(false);
-  const [isDateError, setIsDateError] = useState(false);
-  const [isTypeError, setIsTypeError] = useState(false);
-  const [isPosterError, setIsPosterError] = useState(false);
+  const [formdata, setFormData] = useState({
+    title: '',
+    date: '',
+    type: '',
+    poster: '',
+  });
 
-  // fungsi hendle title
-  function handleTitle(e) {
-    setTitle(e.target.value);
-  }
-  // fungsi hendle date
-  function handleDate(e) {
-    setDate(e.target.value);
-  }
+  const [error, setError] = useState({
+    isTitleError: false,
+    isDateError: false,
+    isTypeError: false,
+    isPosterError: false,
+  });
 
-  // fungsi hendle type
-  function handleType(e) {
-    setType(e.target.value);
-  }
-  // fungsi hendle type
-  function handlePoster(e) {
-    setPoster(e.target.value);
+  const { isTitleError, isDateError, isTypeError, isPosterError } = error;
+
+  const { title, date, type, poster } = formdata;
+
+  function handleError(key, value) {
+    setError((prevError) => ({
+      ...prevError,
+      [key]: value,
+    }));
   }
 
-  // hendle from ketika di submit
-  function handleSubmit(e) {
-    // mencegah prilaku default: refresh
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
 
-    e.preventDefault();
-    // jika di submit datanya tidak ada maka tampilkan pesan eroor nya
+  function validate() {
+    let isValid = true;
+
     if (title === '') {
-      setIsTitleError(true);
-    } else if (date === '') {
-      setIsDateError(true);
-      setIsTitleError(false);
-    } else if (type === '') {
-      setIsTypeError(true);
-      setIsDateError(false);
-    } else if (poster === '') {
-      setIsPosterError(true);
-      setIsTypeError(false);
+      handleError('isTitleError', true);
+      isValid = false;
     } else {
-      // siapkan temlate data yang ingin di input
-      const movie = {
-        id: nanoid(),
-        title: title,
-        year: date,
-        type: type,
-        poster: poster,
-      };
+      handleError('isTitleError', false);
+    }
 
-      setMovies([...movies, movie]);
-      setIsTitleError(false);
-      setIsDateError(false);
-      setIsTypeError(false);
-      setIsPosterError(false);
+    if (date === '') {
+      handleError('isDateError', true);
+      isValid = false;
+    } else {
+      handleError('isDateError', false);
+    }
+
+    if (type === '') {
+      handleError('isTypeError', true);
+      isValid = false;
+    } else {
+      handleError('isTypeError', false);
+    }
+
+    if (poster === '') {
+      handleError('isPosterError', true);
+      isValid = false;
+    } else {
+      handleError('isPosterError', false);
+    }
+
+    return isValid;
+  }
+
+  function addMovie() {
+    const movie = {
+      id: nanoid(),
+      title: title,
+      year: date,
+      type: type,
+      poster: poster,
+    };
+
+    setMovies([...movies, movie]);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (validate()) {
+      addMovie();
+      setFormData({
+        title: '',
+        date: '',
+        type: '',
+        poster: '',
+      });
     }
   }
 
@@ -81,63 +107,57 @@ const From = (props) => {
         <div className={style.from__right}>
           <h2 className={style.right__title}>Add Movie</h2>
           <form onSubmit={handleSubmit}>
-            <div className="from_grup">
+            <div className="form_group">
               <label className={style.from__label} htmlFor="title">
                 Title
               </label>
               <br />
-              <input onChange={handleTitle} className={style.from__input} type="text" id="title" value={title} />
-              {/* operator kondisi */}
-              {/* jika error: true maka tampil data wajib diisi */}
+              <input className={style.from__input} type="text" name="title" id="title" value={title} onChange={handleChange} />
               {isTitleError && (
                 <Alert>
-                  <p className={style.error}>Title Wajib diisi</p>
+                  <p className={style.error}>Masukan title</p>
                 </Alert>
               )}
-              <br />
             </div>
-            <div className="from_grup">
-              <label className={style.from__label} htmlFor="year">
-                Year
+            <div className="form_group">
+              <label className={style.from__label} htmlFor="date">
+                Tahun
               </label>
               <br />
-              <input onChange={handleDate} className={style.from__input} type="number" id="date" value={date} />
-              {/* operator kondisi */}
-              {/* jika error: true maka tampil data wajib diisi */}
+              <input className={style.from__input} type="number" name="date" id="date" value={date} onChange={handleChange} />
               {isDateError && (
                 <Alert>
-                  <p className={style.error}>Date Wajib diisi</p>
+                  <p className={style.error}>Masukan Tahun</p>
                 </Alert>
               )}
-              <br />
             </div>
-            <div className="from_grup">
-              <label className={style.from__label} for="">
-                Pilih Opsi
+            <div className="form_group">
+              <label className={style.from__label} htmlFor="type">
+                --- Pilih ---
               </label>
               <br />
-              <select name="pilih" id="pilih" onChange={handleType} value={type}>
-                <option value="">Pilh :</option>
+              <select name="type" id="type" value={type} onChange={handleChange}>
+                <option value="">Select:</option>
                 <option value="action">Action</option>
-                <option value="lupa">lupa</option>
+                <option value="drama">Drama</option>
                 <option value="movie">Movie</option>
               </select>
               {isTypeError && (
                 <Alert>
-                  <p className={style.error}>Type Wajib diisi</p>
+                  <p className={style.error}>Masukan Type</p>
                 </Alert>
               )}
             </div>
-            <div className="from_grup">
+            <div className="form_group">
               <br />
-              <label className={style.from__label} for="">
-                Masukan link Foto
+              <label className={style.from__label} htmlFor="poster">
+                Link Foto
               </label>
               <br />
-              <input onChange={handlePoster} className={style.from__input} type="url" id="poster" value={poster} />
+              <input className={style.from__input} type="url" name="poster" id="poster" value={poster} onChange={handleChange} />
               {isPosterError && (
                 <Alert>
-                  <p className={style.error}>Gambar Wajib diisi</p>
+                  <p className={style.error}>Masukan Link Foto</p>
                 </Alert>
               )}
             </div>
@@ -151,4 +171,4 @@ const From = (props) => {
   );
 };
 
-export default From;
+export default Form;
