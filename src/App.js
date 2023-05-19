@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import CreateMovie from './pages/movie/create';
 import Popular from './pages/movie/popular';
 import NowPlaying from './pages/movie/now';
-import TopRatedMovie from './pages/movie/toprated';
+import Counter from './pages/movie/toprated';
 import Layout from './Layout';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/movie/create" element={<CreateMovie />} />
           <Route path="/movie/popular" element={<Popular />} />
           <Route path="/movie/now" element={<NowPlaying />} />
-          <Route path="/movie/top" element={<TopRatedMovie />} />
+          <Route path="/movie/top" element={<Counter />} />
         </Routes>
       </Layout>
     </div>
