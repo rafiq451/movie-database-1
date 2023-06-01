@@ -1,13 +1,25 @@
-import style from './Footer.module.css';
+import styled from 'styled-components';
 
+const FooterStyle = styled.div`
+  background-color: var(--primary);
+  padding: 1rem;
+  font-family: Poppins;
+  color: #fff;
+  text-align: center;
+
+  h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+`;
 const Footer = () => {
   return (
-    <div className={style.container}>
-      <footer className={style.footer}>
-        <h2 className={style.footer__title}>Movie App</h2>
-        <p className={style.footer__author}>by M.Rafiq</p>
+    <FooterStyle>
+      <footer>
+        <h2>Movie App</h2>
+        <p>by M.Rafiq</p>
       </footer>
-    </div>
+    </FooterStyle>
   );
 };
 

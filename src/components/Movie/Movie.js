@@ -1,15 +1,39 @@
-import style from '../Movies/Movies.module.css';
+// import styled-componetns
+import styled from 'styled-components';
+const MovieStyled = styled.div`
+  img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+  }
+  h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  p {
+    color: var(--secondry);
+    margin-bottom: 1rem;
+  }
+  @media screen and (min-width: 768px) {
+    flex-basis: 50%;
+  }
 
+  @media screen and (min-width: 992px) {
+    padding: 1rem;
+    flex-basis: 25%;
+  }
+`;
 // tangkap props
 const Movie = (props) => {
   // destructing object props
   const { movie } = props;
   return (
-    <div className={style.movie}>
-      <img className={style.movie__image} src={movie.poster} alt="" />
-      <h3 className={style.movie__title}>{movie.title}</h3>
-      <p className={style.movie__date}>{movie.year}</p>
-    </div>
+    <MovieStyled>
+      <img src={movie.poster} alt="" />
+      <h3>{movie.title}</h3>
+      <p>{movie.year}</p>
+    </MovieStyled>
   );
 };
 

@@ -2,6 +2,11 @@ import { useState } from 'react';
 import style from './From.module.css';
 import { nanoid } from 'nanoid';
 import Alert from '../Alert/Alert';
+import Button from '../ui/Button';
+import Input from '../ui/Form/input';
+import From from '../ui/Form/form';
+import Image from '../ui/Media/image';
+import Label from '../ui/Form/label';
 const Form = (props) => {
   const { movies, setMovies } = props;
 
@@ -102,17 +107,15 @@ const Form = (props) => {
     <div className={style.container}>
       <section className={style.from}>
         <div className={style.from__left}>
-          <img className={style.from__image} src="https://source.unsplash.com/600x400?spiderman" alt="" />
+          <Image src="https://source.unsplash.com/600x400?spiderman" alt="" />
         </div>
         <div className={style.from__right}>
           <h2 className={style.right__title}>Add Movie</h2>
-          <form onSubmit={handleSubmit}>
+          <From onSubmit={handleSubmit}>
             <div className="form_group">
-              <label className={style.from__label} htmlFor="title">
-                Title
-              </label>
+              <Label htmlFor="title">Title</Label>
               <br />
-              <input className={style.from__input} type="text" name="title" id="title" value={title} onChange={handleChange} />
+              <Input sm type="text" placeholder="Masukan Title" name="title" id="title" value={title} onChange={handleChange} />
               {isTitleError && (
                 <Alert>
                   <p className={style.error}>Masukan title</p>
@@ -120,11 +123,9 @@ const Form = (props) => {
               )}
             </div>
             <div className="form_group">
-              <label className={style.from__label} htmlFor="date">
-                Tahun
-              </label>
+              <Label htmlFor="date">Tahun</Label>
               <br />
-              <input className={style.from__input} type="number" name="date" id="date" value={date} onChange={handleChange} />
+              <Input sm type="number" placeholder="Masukan Tahun" name="date" id="date" value={date} onChange={handleChange} />
               {isDateError && (
                 <Alert>
                   <p className={style.error}>Masukan Tahun</p>
@@ -132,11 +133,9 @@ const Form = (props) => {
               )}
             </div>
             <div className="form_group">
-              <label className={style.from__label} htmlFor="type">
-                --- Pilih ---
-              </label>
+              <Label htmlFor="type">--Pilih--</Label>
               <br />
-              <select name="type" id="type" value={type} onChange={handleChange}>
+              <select className={style.select__form} name="type" id="type" value={type} onChange={handleChange}>
                 <option value="">Select:</option>
                 <option value="action">Action</option>
                 <option value="drama">Drama</option>
@@ -150,21 +149,20 @@ const Form = (props) => {
             </div>
             <div className="form_group">
               <br />
-              <label className={style.from__label} htmlFor="poster">
-                Link Foto
-              </label>
+              <Label htmlFor="poster">Link Foto</Label>
               <br />
-              <input className={style.from__input} type="url" name="poster" id="poster" value={poster} onChange={handleChange} />
+              <Input sm type="url" name="poster" id="poster" value={poster} onChange={handleChange} placeholder="Masukan Link Foto" />
               {isPosterError && (
                 <Alert>
                   <p className={style.error}>Masukan Link Foto</p>
                 </Alert>
               )}
             </div>
-            <button className={style.from__button} type="submit">
+            {/* component Button  */}
+            <Button color="secondary" full md type="submit">
               Submit
-            </button>
-          </form>
+            </Button>
+          </From>
         </div>
       </section>
     </div>

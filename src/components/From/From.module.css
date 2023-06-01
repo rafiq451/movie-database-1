@@ -11,11 +11,6 @@
 .from__left {
   margin-bottom: 1rem;
 }
-.from__image {
-  max-width: 100%;
-  border-radius: 25px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
 
 /* from right */
 .from__right {
@@ -31,33 +26,13 @@
   text-align: center;
 }
 
-.from__label {
-  color: var(--secondry);
-  font-size: 15px;
-}
-
-.from__input {
-  width: 100%;
-  padding: 5px;
-  height: 1.8rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  border: 2px solid rgb(177, 177, 177);
-}
-
-.from__button {
-  padding: 0.4rem 4rem;
-  margin-top: 1rem;
-  background-color: var(--primary);
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
-  width: 100%;
-}
 .error {
   color: lightcoral;
+}
+.select__form {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 @media (min-width: 768px) {
   .from__right {
@@ -71,10 +46,6 @@
 
   .right__title {
     font-size: 30px;
-  }
-
-  .from__label {
-    font-size: medium;
   }
 }
 @media (min-width: 992px) {
@@ -94,11 +65,6 @@
     font-size: 40px;
   }
 
-  .from__input {
-    width: 100%;
-    padding: 2px;
-    margin-bottom: 1rem;
-  }
   .from__button {
     padding: 0.5rem 6rem;
   }

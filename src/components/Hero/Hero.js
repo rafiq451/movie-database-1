@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import style from './Hero.module.css';
+import Button from '../ui/Button';
+// import HeroStyle
+import HeroStyle from './hero.modules';
+import Heading from '../ui/Typography/Heading';
+import Paragraph from '../ui/Typography/Paragraph';
+import Image from '../ui/Media/image';
 
 const Hero = () => {
   const [movie, SetMovie] = useState('');
@@ -14,19 +19,22 @@ const Hero = () => {
     fectMovie();
   }, []);
   return (
-    <div className={style.container}>
-      <section className={style.hero}>
-        <div className={style.hero__left}>
-          <h2 className={style.hero__title}>{movie.Title}</h2>
-          <h3 className={style.hero__gendre}>Genre {movie.Genre}</h3>
-          <p className={style.hero__deskription}>{movie.Plot}</p>
-          <button className={style.hero__button}>Watch</button>
+    // jika class nya tidak mau dihapus maka panggil class nya di components Hero yang sudah di style ulang
+    <HeroStyle>
+      <section>
+        <div className="hero__left">
+          <Heading>{movie.Title}</Heading>
+          <h3>Genre {movie.Genre}</h3>
+          <Paragraph>{movie.Plot}</Paragraph>
+          <Button md color="primary">
+            Watch
+          </Button>
         </div>
-        <div className={style.hero__right}>
-          <img className={style.hero__img} src={movie.Poster} alt="" />
+        <div className="styled.hero__right">
+          <Image src={movie.Poster} alt="" />
         </div>
       </section>
-    </div>
+    </HeroStyle>
   );
 };
 export default Hero;
