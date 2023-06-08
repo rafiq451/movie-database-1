@@ -44,7 +44,7 @@ const Movies = (props) => {
   }
   return (
     <MovieStyled>
-      <h2>Letest Movie</h2>
+      <h2>{props.title}</h2>
       <section>
         <div className="movies">
           {movies.map((movie) => {
@@ -57,3 +57,4 @@ const Movies = (props) => {
   );
 };
 export default Movies;
+// title="Letest Movie"

@@ -1,40 +1,32 @@
-// const TopRatedMovie = () => {
-//   return (
-//     <div>
-//       <h1>Top Rated</h1>
-//     </div>
-//   );
-// };
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Hero from '../../components/Hero/Hero';
+import Movies from '../../components/Movies/Movies';
 
-import { useEffect, useState } from 'react';
+const TopRatedMovie = () => {
+  // simpan API KEY dan URL kedalam variable
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
 
-// export default TopRatedMovie;
-const Counter = () => {
-  const [angka, SetAngka] = useState(0);
-  const [nama, SetNama] = useState();
-  function addAngka() {
-    SetAngka(angka + 1);
-    console.log(angka);
-  }
-  function UbahNama() {
-    SetNama('Muhammad Rafiq');
-  }
-  // callback pakai arrow function
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log('Dijalankan Saat componen di-mount dan update');
-    document.title = `Angka ${angka}`;
-  }, [angka]);
-  console.log('Dijalankan Saat componen di rander');
+    getTopRatedMovies();
+  }, []);
 
+  async function getTopRatedMovies() {
+    const response = await axios(URL);
+
+    // simpan data ke setMovies
+    setMovies(response.data.results);
+  }
   return (
     <div>
-      <p>Nilai Angka : {angka}</p>
-      <button onClick={addAngka}>add</button>
-      <p>Nama : {nama}</p>
-      <button onClick={UbahNama}>ubah Nama</button>
+      <Hero />
+      <Movies movies={movies} title="Top Rated Movies" />
     </div>
   );
 };
 
-export default Counter;
+export default TopRatedMovie;

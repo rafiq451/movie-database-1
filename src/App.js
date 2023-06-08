@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import CreateMovie from './pages/movie/create';
 import Popular from './pages/movie/popular';
 import NowPlaying from './pages/movie/now';
-import Counter from './pages/movie/toprated';
+import TopRatedMovie from './pages/movie/toprated';
 import Layout from './Layout';
 // import ThemeProvider & Theme
 import { ThemeProvider } from 'styled-components';
@@ -20,7 +20,7 @@ const App = () => {
             <Route path="/movie/create" element={<CreateMovie />} />
             <Route path="/movie/popular" element={<Popular />} />
             <Route path="/movie/now" element={<NowPlaying />} />
-            <Route path="/movie/top" element={<Counter />} />
+            <Route path="/movie/top" element={<TopRatedMovie />} />
           </Routes>
         </Layout>
       </ThemeProvider>

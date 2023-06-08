@@ -16,6 +16,7 @@ const Button = styled.button`
   color: #fff;
   cursor: pointer;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 
   /* Akses props Variant */
 

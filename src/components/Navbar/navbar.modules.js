@@ -28,6 +28,10 @@ const NavbarStyle = styled.div`
     color: var(--secondry);
   }
 
+  .active {
+    color: var(--secondry);
+  }
+
   @media screen and (min-width: 768px) {
     nav {
       display: flex;

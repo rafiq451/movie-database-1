@@ -3,6 +3,12 @@ import NavbarStyle from './navbar.modules';
 // import NavbarStyle
 
 const Navbar = () => {
+  // seleksi DOM
+  // const li = document.querySelector('div ul li a');
+  // li.addEventListener('click', function () {
+  //   alert('hallo');
+  // });
+
   return (
     <NavbarStyle>
       <nav>

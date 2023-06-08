@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Movies movies={movies} setMovies={setMovies} />
+      <Movies movies={movies} title="Letest Movie" setMovies={setMovies} />
       <From movies={movies} setMovies={setMovies} />
     </>
   );
