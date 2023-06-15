@@ -1,13 +1,17 @@
 // import styled-componetns
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 const MovieStyled = styled.div`
   img {
     max-width: 100%;
     margin-bottom: 1rem;
   }
-  h3 {
+  .link {
     color: var(--primary);
     margin-bottom: 1rem;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 500;
   }
   p {
     color: var(--secondry);
@@ -78,7 +82,9 @@ const Movie = (props) => {
         </div>
         <img src={movie.poster || `https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="" />
       </div>
-      <h3>{movie.title}</h3>
+      <Link className="link" to={`/movie/${movie.id}`}>
+        {movie.title}
+      </Link>
       <p>{movie.year || movie.release_date.substring(0, 4)}</p>
     </MovieStyled>
   );

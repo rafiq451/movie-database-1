@@ -3,12 +3,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Hero from '../../components/Hero/Hero';
 import Movies from '../../components/Movies/Movies';
+import ENDPOINTS from '../../components/utils/constants/endpoints';
 
 const TopRatedMovie = () => {
-  // simpan API KEY dan URL kedalam variable
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
-
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -16,7 +13,7 @@ const TopRatedMovie = () => {
   }, []);
 
   async function getTopRatedMovies() {
-    const response = await axios(URL);
+    const response = await axios(ENDPOINTS.TOPRATED);
 
     // simpan data ke setMovies
     setMovies(response.data.results);

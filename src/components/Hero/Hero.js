@@ -6,12 +6,13 @@ import Heading from '../ui/Typography/Heading';
 import Paragraph from '../ui/Typography/Paragraph';
 import Image from '../ui/Media/image';
 import axios from 'axios';
+import ENDPOINTS from '../utils/constants/endpoints';
 
 const Hero = () => {
   const [movie, SetMovie] = useState('');
 
   // memanggil API
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  // const API_KEY = process.env.REACT_APP_API_KEY;
 
   // ambil properti gendres dan ubah nya manjadi string
   const genres = movie && movie.genres.map((genre) => genre.name).join(', ');
@@ -27,8 +28,8 @@ const Hero = () => {
 
   // mendapatkan 1 Data dari Trending Movies
   async function getTrendingMovies() {
-    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
-    const response = await axios(URL);
+    // const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+    const response = await axios(ENDPOINTS.TRANDINGMOVIES);
     return response.data.results[3];
   }
 
@@ -39,7 +40,8 @@ const Hero = () => {
     const id = trendingMovies.id;
 
     // fetch detail movie berdasarkan id
-    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
+    // const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
+    const URL = ENDPOINTS.getTrendingMovies(id);
 
     const response = await axios(URL);
     console.log(response.data);

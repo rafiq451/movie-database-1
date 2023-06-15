@@ -9,6 +9,7 @@ import Layout from './Layout';
 // import ThemeProvider & Theme
 import { ThemeProvider } from 'styled-components';
 import theme from './components/utils/constants/theme';
+import Detail from './pages/movie/detail';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/movie/popular" element={<Popular />} />
             <Route path="/movie/now" element={<NowPlaying />} />
             <Route path="/movie/top" element={<TopRatedMovie />} />
+            <Route path="/movie/:id" element={<Detail />} />
           </Routes>
         </Layout>
       </ThemeProvider>
