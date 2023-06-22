@@ -1,7 +1,12 @@
+import Hero from '../../components/Hero/Hero';
+import Form from '../../components/From/From';
+
 const CreateMovie = () => {
   return (
     <div>
-      <h1>Create Movie</h1>
+      <Hero />
+      {/* <From movies={movies} setMovies={setMovies} /> */}
+      <Form />
     </div>
   );
 };

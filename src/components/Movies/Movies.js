@@ -1,8 +1,9 @@
+import { useSelector } from 'react-redux';
 import Movie from '../Movie/Movie';
-import { nanoid } from 'nanoid';
 
 // import styled-components
 import styled from 'styled-components';
+// import store from '../../store';
 
 // membuat styled-components di dalam componet
 const MovieStyled = styled.div`
@@ -30,18 +31,10 @@ const MovieStyled = styled.div`
 `;
 
 const Movies = (props) => {
-  // destructing props
-  const { movies, setMovies } = props;
-  function tabahFilm() {
-    const movie = {
-      id: nanoid(4),
-      title: 'Spiral Jigsaw',
-      year: 2021,
-      type: 'Movie',
-      poster: 'https://picsum.photos/300/400',
-    };
-    setMovies([...movies, movie]);
-  }
+  const movies = useSelector((store) => store.movies.movies);
+
+  console.log(movies);
+
   return (
     <MovieStyled>
       <h2>{props.title}</h2>
@@ -51,7 +44,6 @@ const Movies = (props) => {
             return <Movie key={movie.id} movie={movie} />;
           })}
         </div>
-        <button onClick={tabahFilm}>Add Movie</button>
       </section>
     </MovieStyled>
   );

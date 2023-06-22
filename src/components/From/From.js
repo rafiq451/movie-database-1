@@ -7,8 +7,15 @@ import Input from '../ui/Form/input';
 import From from '../ui/Form/form';
 import Image from '../ui/Media/image';
 import Label from '../ui/Form/label';
-const Form = (props) => {
-  const { movies, setMovies } = props;
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addMovie } from '../../features/movieSlice';
+const Form = () => {
+  // buat navigasi
+  const navigation = useNavigate();
+
+  // buat dispacth
+  const dispacth = useDispatch();
 
   const [formdata, setFormData] = useState({
     title: '',
@@ -77,7 +84,7 @@ const Form = (props) => {
     return isValid;
   }
 
-  function addMovie() {
+  function submitMovie() {
     const movie = {
       id: nanoid(),
       title: title,
@@ -85,15 +92,19 @@ const Form = (props) => {
       type: type,
       poster: poster,
     };
+    // setMovies([...movies, movie]);
 
-    setMovies([...movies, movie]);
+    dispacth(addMovie(movie));
+
+    // ketika di submit akan ke halaman home
+    navigation('/');
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (validate()) {
-      addMovie();
+      submitMovie();
       setFormData({
         title: '',
         date: '',
