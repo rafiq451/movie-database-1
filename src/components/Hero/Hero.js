@@ -44,7 +44,7 @@ const Hero = () => {
     const URL = ENDPOINTS.getTrendingMovies(id);
 
     const response = await axios(URL);
-    console.log(response.data);
+    // console.log(response.data);
     SetMovie(response.data);
   }
   // useEffect(function () {

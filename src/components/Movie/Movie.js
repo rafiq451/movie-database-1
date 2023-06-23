@@ -11,7 +11,7 @@ const MovieStyled = styled.div`
     margin-bottom: 1rem;
     text-decoration: none;
     font-size: large;
-    font-weight: 500;
+    font-weight: 900;
   }
   p {
     color: var(--secondry);

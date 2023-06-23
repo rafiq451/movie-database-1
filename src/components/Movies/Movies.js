@@ -33,7 +33,7 @@ const MovieStyled = styled.div`
 const Movies = (props) => {
   const movies = useSelector((store) => store.movies.movies);
 
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <MovieStyled>
