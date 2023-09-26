@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const FooterStyle = styled.div`
-  background-color: var(--primary);
+  background-color: var(--secondry);
   padding: 1rem;
   font-family: Poppins;
   color: #fff;

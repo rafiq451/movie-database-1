@@ -1,7 +1,7 @@
 // import styled-components
 import styled from 'styled-components';
 const NavbarStyle = styled.div`
-  background-color: var(--primary);
+  background-color: var(--secondry);
   padding: 1rem;
   color: #fff;
   font-family: Poppins;
@@ -25,7 +25,7 @@ const NavbarStyle = styled.div`
     color: #fff;
   }
   .list:hover {
-    color: var(--secondry);
+    color: var(--primary);
   }
 
   .active {

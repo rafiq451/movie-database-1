@@ -13,7 +13,7 @@ const HeroStyle = styled.div`
   h3 {
     font-size: 15px;
     font-weight: 500;
-    color: var(--secondry);
+    color: var(--primary);
     margin-bottom: 2rem;
   }
 
